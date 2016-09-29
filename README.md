@@ -25,36 +25,16 @@ In your project's Gruntfile, add a section named `madge` to the data object pass
 ```js
 grunt.initConfig({
   madge: {
-	options: {
-	  format: 'amd'
-	},
-	all: ['js/modules']
+	  all: ['js/modules']
   },
 })
 ```
 
 ### Options
-
-#### format
-Type: `String`
-Default value: `'cjs'`
-
-Which format the modules being checked are using (cjs, amd).
-
-#### exclude
-Type: `String`
-Default value: `''`
-
-String from which a regex will be constructed for excluding files from the scan.
+All options are reported : [see madge options](https://github.com/pahen/madge/blob/master/README.md#configuration)
 
 #### force
 Type: `Boolean`
 Default value: `false`
 
 Set `force` to `true` to report errors but not fail the task.
-
-#### breakOnError
-Type: `Boolean`
-Default value: `true`
-
-Set `breakOnError` to `false` to not fail the task on parser errors and when modules are missing.

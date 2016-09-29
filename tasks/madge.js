@@ -9,50 +9,48 @@
 'use strict';
 
 module.exports = function (grunt) {
-	var madge = require('madge');
+    var madge = require('madge');
 
-	grunt.registerMultiTask('madge', 'Check for circular dependencies in modules.', function () {
-		var options = this.options({
-				format: 'cjs',
-				exclude: '',
-				force: false,
-				breakOnError: true
-			}),
-			files = this.filesSrc,
-			result, circular;
+    grunt.registerMultiTask('madge', 'Check for circular dependencies in modules.', function () {
+        var options = this.options({
+                exclude: '',
+                force: false
+            }),
+            files = this.filesSrc,
+            result, circular;
 
-		grunt.log.write('Checking ' + files.join(', ') + '...');
+        grunt.log.write('Checking ' + files.join(', ') + '...');
 
-		// run madge on the given files/dirs
-		result = madge(files, options);
+        // run madge on the given files/dirs
+        result = madge(files, options);
 
-		circular = result.circular().getArray();
+        circular = result.circular().getArray();
 
-		// check if madge found any circular dependencies
-		if (circular.length) {
-			grunt.log.error();
+        // check if madge found any circular dependencies
+        if (circular.length) {
+            grunt.log.error();
 
-			// show a list of circular dependencies
-			circular.forEach(function (path) {
-				path.forEach(function (module, idx) {
-					if (idx) {
-						grunt.log.write(' -> '.cyan);
-					}
-					grunt.log.write(module.red);
-				});
-				grunt.log.writeln('');
-			});
+            // show a list of circular dependencies
+            circular.forEach(function (path) {
+                path.forEach(function (module, idx) {
+                    if (idx) {
+                        grunt.log.write(' -> '.cyan);
+                    }
+                    grunt.log.write(module.red);
+                });
+                grunt.log.writeln('');
+            });
 
-			grunt.log.warn('Circular dependencies found.');
+            grunt.log.warn('Circular dependencies found.');
 
-			// fail task except if force was set
-			return options.force;
+            // fail task except if force was set
+            return options.force;
 
-		} else {
-			// print a success message
-			grunt.log.ok();
+        } else {
+            // print a success message
+            grunt.log.ok();
 
-			return true;
-		}
-	});
+            return true;
+        }
+    });
 };
