@@ -32,9 +32,3 @@ grunt.initConfig({
 
 ### Options
 All options are reported : [see madge options](https://github.com/pahen/madge/blob/master/README.md#configuration)
-
-#### force
-Type: `Boolean`
-Default value: `false`
-
-Set `force` to `true` to report errors but not fail the task.
