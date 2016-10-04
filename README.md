@@ -31,4 +31,4 @@ grunt.initConfig({
 ```
 
 ### Options
-All options are reported : [see madge options](https://github.com/pahen/madge/blob/master/README.md#configuration)
+See madge [configuration](https://github.com/pahen/madge/blob/master/README.md#configuration) for supported settings.
