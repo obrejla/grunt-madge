@@ -16,11 +16,10 @@ module.exports = function (grunt) {
         grunt.log.write('Checking ' + this.filesSrc.join(', ') + '...');
 
         var done = this.async();
-        
+
         // run madge on the given files/dirs
         madge(this.filesSrc, this.options()).then(function (res) {
             var circular = res.circular();
-            console.log(circular);
 
             // check if madge found any circular dependencies
             if (circular.length) {
