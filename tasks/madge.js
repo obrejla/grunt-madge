@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('madge', 'Check for circular dependencies in modules.', function () {
 
-        grunt.log.write('Checking ' + this.filesSrc.join(', ') + '...');
+        grunt.log.write('Checking ' + this.filesSrc.length + ' file(s)...');
 
         var done = this.async();
 
